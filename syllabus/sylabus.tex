@@ -1,0 +1,375 @@
+% Don't touch this %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[11pt]{article}
+\usepackage{fullpage}
+\usepackage[left=1in,top=1in,right=1in,bottom=1in,headheight=3ex,headsep=3ex]{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+
+\newcommand{\blankline}{\quad\pagebreak[2]}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Modify Course title, instructor name, semester here %%%%%%%%
+
+\title{DATA 601: Introduction to Data Science}
+\author{Murat Guner}
+\date{Fall 21}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Don't touch this %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[sc]{mathpazo}
+\linespread{1.05} % Palatino needs more leading (space between lines)
+\usepackage[T1]{fontenc}
+\usepackage[mmddyyyy]{datetime}% http://ctan.org/pkg/datetime
+\usepackage{advdate}% http://ctan.org/pkg/advdate
+\newdateformat{syldate}{\twodigit{\THEMONTH}/\twodigit{\THEDAY}}
+\newsavebox{\MONDAY}\savebox{\MONDAY}{Mon}% Mon
+\newcommand{\week}[1]{%
+%  \cleardate{mydate}% Clear date
+% \newdate{mydate}{\the\day}{\the\month}{\the\year}% Store date
+  \paragraph*{\kern-2ex\quad #1, \syldate{\today} - \AdvanceDate[4]\syldate{\today}:}% Set heading  \quad #1
+%  \setbox1=\hbox{\shortdayofweekname{\getdateday{mydate}}{\getdatemonth{mydate}}{\getdateyear{mydate}}}%
+  \ifdim\wd1=\wd\MONDAY
+    \AdvanceDate[7]
+  \else
+    \AdvanceDate[7]
+  \fi%
+}
+\usepackage{setspace}
+\usepackage{multicol}
+%\usepackage{indentfirst}
+\usepackage{fancyhdr,lastpage}
+\usepackage{url}
+\pagestyle{fancy}
+\usepackage{hyperref}
+\usepackage{lastpage}
+\usepackage{amsmath}
+\usepackage{layout}
+
+\lhead{}
+\chead{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Modify header here %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\rhead{\footnotesize UMBC DATA 601}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Don't touch this %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\lfoot{}
+\cfoot{\small \thepage/\pageref*{LastPage}}
+\rfoot{}
+
+\usepackage{array, xcolor}
+\usepackage{color,hyperref}
+\definecolor{clemsonorange}{HTML}{EA6A20}
+\hypersetup{colorlinks,breaklinks,linkcolor=clemsonorange,urlcolor=clemsonorange,anchorcolor=clemsonorange,citecolor=black}
+
+\begin{document}
+
+\maketitle
+
+\blankline
+
+\begin{tabular*}{.93\textwidth}{@{\extracolsep{\fill}}lr}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Modify information %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+E-mail: \texttt{mguner@umbc.edu} & Web: \href{https://github.com/mguner/601_Fall21_Thursday}{\tt\bf Course's Github Page}  \\
+
+ Office Hours: \href{https://calendly.com/mguner/fall21-officehours}{\tt\bf By Appointment} &  Class Hours: Th 7:10 - 9:40pm \\
+
+ Office: Online & Class Room: IT-456 \\
+ & \\
+\hline
+\end{tabular*}
+
+
+\vspace{5 mm}
+
+\begin{itemize}
+	\item I respond to messages within 48 hours, excluding breaks and weekends.
+	\item If your question is something about your code or something we covered in class then please don't send me email, instead schedule an appointment.
+	\item I am available after class for questions and help. Outside of that timeframe, please schedule an appointment.
+\end{itemize}
+
+
+\section*{Course Description}
+
+This class prepares students for more advanced topics in data science and introduces some of the tools and notions which are frequently used in the industry. Topics include: a review of Python programming and most fundamental modules; acquisition, handling, and working with different data; exploratory data analysis with statistics; data visualization and web scraping; life cycle of data science projects and different roles in a data science team, and ethical issues in data science.
+
+\section*{Student Learning Outcomes}
+
+By the end of this course, successful students will be able to:
+\begin{enumerate}
+\item Describe the key activities in a data science project. 
+\item Use popular Python packages for data visualization.
+\item Use Pandas library for data transformations.
+\item Evaluate the quality of a dataset for a given data science project.
+\item Create functions and programs that clean and transform raw data sets.
+\item Load, read and write from different data sources. 
+\item Apply basic statistical knowledge in a data science project to test and verify hypotheses.
+\item Create new data sets by combining data from different sources. 
+\item Understand the role of modeling in a data science project.
+\item Apply best practices of communication for reporting upon completing a data science project.
+\end{enumerate}
+
+\section*{Format and Procedures}
+
+This will be an in-person course and depending on the pandemic situation there might be online(synchronous) components. Computers with internet connection and working cameras are required during the lectures. We will also be using a software called \href{https://research.google.com/colaboratory/faq.html}{Colaboratory Notebooks} as the main medium of delivery for the lecture materials. For more information and to get  familiarity with it, \href{https://colab.research.google.com/notebooks/intro.ipynb}{please check this tutorial.}. In addition to these:
+
+\begin{enumerate}
+	\item Students will complete assigned homework, readings, quizzes. 
+	\item Students will engage with hands-on labs and practical exercises to prepare them for challenges they may encounter in the workplace.
+	\item Students will occasionally present their solutions to homework assignments
+in class.
+	\item Students who are participating in the class online should be able to share both their video and audio. 
+\end{enumerate}
+\section*{Course Requirements}
+\subsection*{Textbook}
+We will not be following one single textbook in this course. Weekly reading materials and relevant course materials will be shared beforehand via Blackboard and/or the course's Github repository. In addition to these, I will be following the logical structures of the following textbook.
+\begin{itemize}
+\item \href{https://jakevdp.github.io/PythonDataScienceHandbook/}{\tt\bf Python Data Science Handbook}: We will follow this book in the programming with Python parts of the course. The sections related to Pandas library are especially well written.
+\end{itemize}
+\subsection*{Hardware Requirements}
+\begin{itemize}
+	\item Web browser capable of running technical notebooks
+	\item A computer with sufficient internet speed for online lectures. Make sure that your computer has video and microphone access.
+\end{itemize}
+
+\subsection*{Quizzes}
+
+There will be some quizzes in the beginning of the lectures to assess students' understanding of the reading assignments. Also, at the end of some lectures, students will be given quizzes to assess their understanding of the covered material.
+\subsection*{Homework}
+
+There will be homework assigned to students roughly every two weeks. Depending on the scale of the homework, students will be given one or two weeks to submit their homework and other than exceptional circumstances this homework will be graded within a week.
+
+\subsection*{Attendance}
+
+In every lecture, I will take attendance at some point during the lecture. Students who miss this part of the lecture will be considered as absent and except for medical situations (or some other formal/written excuse) no excuse will be accepted for missing a class. Attendance will contribute to 10 percent of the final grade. 
+
+
+\section*{Grading}
+
+In the final grade, the assignments will have the following weights:
+
+\begin{center}
+	\begin{tabular}{|c|c|c|}
+		\hline
+		Quizzes (9 quizzes total) & --- & 40\% \\
+		Homework (6 HW total)& --- & 50\% \\
+		Participation \& Engagement & --- & 10\% \\
+		\hline
+	\end{tabular}
+\end{center}
+\subsection*{Grading Distribution}
+Final letter grades will be assigned as follows: (Grades will be rounded upwards.)
+\newline
+\begin{center}
+	\begin{tabular}{|c|c|c|}
+		\hline
+		94-100 & --- & A\\
+		 93 - 90 & --- &  A- \\
+		 87 - 89 & --- &  B+ \\
+		 83 - 86 & --- &  B \\
+		 80 - 82 & --- &  B- \\
+		 77 - 79 & --- &  C+ \\
+		 73 - 76 & --- &  C \\
+		 70 - 72 & --- &  C- \\
+		 67 - 69 & --- &  D+ \\
+		 0 - 59 & --- & F \\
+		\hline
+	\end{tabular}
+
+\end{center}
+	
+% Fifth Section %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+
+\section*{Resources}
+All students enrolled in a course offered at the Universities at Shady Grove (USG) have the unique opportunity to receive support from both their home institution and the USG campus. The Division of  \& Academic Services (SAS) is committed to ensuring the success of all students at USG by providing services in the areas of personal, social, academic, and professional support. These services are currently being delivered in a hybrid format to offer students the flexibility of accessing services either in-person or virtually. Be sure to subscribe to \href{https://visitor.r20.constantcontact.com/manage/optin?v=001w-E_TKzSoiZOmBq--83riRAiTv4nrjQS}{USG Weekly} to receive a weekly email update about upcoming events! For more information about available services in Shady Grove campus please check \href{https://docs.google.com/document/d/10Mi70FEECEVqA675n-NadBkhAHAUqkM2/edit?usp=sharing&ouid=105504176067978366034&rtpof=true&sd=true}{this document.}
+
+
+\section*{Course Policies}
+
+\subsection*{During Class}
+
+\footnotesize{ Please be mindful that the COVID-19 pandemic is not over yet and everyone has different levels of concerns. This is why UMBC/USG policies constitutes a common denominator that I expect everyone to follow in my classes. I ask everyone to be proactive about this and do their fair share in order to keep our community safe and protected. Moreover if you have any concerns about this topic please don't hesitate to share it with me immediately.}
+
+\footnotesize{I understand that the electronic recording of notes will be important for class and so computers will be allowed in class. Please refrain from using computers for anything but activities related to the class. Phones are prohibited as they are rarely useful for anything in the course. Eating and drinking are allowed in class but please refrain from it affecting the course. Try not to eat your lunch in class as the classes are typically active.}
+
+\subsection*{Policies on Incomplete Grades and Late Assignments}
+Late/incomplete assignments will be accepted if an extension has been agreed to in advance. Emergency situations will be handled on a case by case basis with appropriate justification or documentation.
+\newline 
+Incomplete grades are granted only for extenuating circumstances and your request is made before the last week of class.
+
+\section*{Institutional Policies}
+
+\subsection*{Covid-19 Policies}
+Please see \href{https://docs.google.com/document/d/1xWWGAR8qEzKYr7qaVHoEhvO6lyXIyn6M3M7EFZPJQgA/edit?usp=sharing}{this Google doc} for UMBC Policies and Resources during COVID-19. 
+
+\subsection*{Academic Integrity and Honesty}
+
+By enrolling in this course, each student assumes the responsibilities of an active participant in UMBC’s scholarly community in which everyone's academic work and behavior are held to the highest standards of honesty.  Cheating, fabrication, plagiarism, and helping other to commit these acts are all forms of academic dishonesty, and they are wrong.  Academic misconduct could result in disciplinary action that may include, but is not limited to failure, suspension or dismissal.  
+\newline
+Refer to the UMBC policy on Academic Integrity: \href{https://catalog.umbc.edu/content.php?catoid=17&navoid=879#academic-integrity}{UMBC Academic Integrity Policy}
+
+
+\subsection*{Diversity Statement}
+It is my intent that students from all diverse backgrounds and perspectives be well-served by this course, that students' learning needs be addressed both in and out of class, and that the diversity that the students bring to this class be viewed as a resource, strength and benefit. It is my intent to present materials and activities that are respectful of diversity: gender identity, sexuality, disability, age, socioeconomic status, ethnicity, race, nationality, religion, and culture. Your suggestions are encouraged and appreciated. Please let me know ways to improve the effectiveness of the course for you personally, or for other students or student groups.
+
+\subsection*{Student Disability Services}
+
+UMBC is committed to eliminating discriminatory obstacles that may disadvantage students based on disability. Services for students with disabilities are provided for all students qualified under \href{https://en.wikipedia.org/wiki/Americans_with_Disabilities_Act_of_1990}{the Americans with Disabilities Act (ADA) of 1990}, \href{https://en.wikipedia.org/wiki/ADA_Amendments_Act_of_2008}{the ADAAA of 2009}, and \href{https://en.wikipedia.org/wiki/Section_504_of_the_Rehabilitation_Act}{Section 504 of the Rehabilitation Act} who request and are eligible for accommodations. The Office of Student Disability Services (SDS) is the UMBC department designated to coordinate reasonable accommodations that would allow students to have equal access and inclusion in all courses, programs, and activities of the University.
+If you have a documented disability and need to request academic accommodations, please register with the Office of Student Disability Services (SDS) as soon as possible. To begin the registration process please visit the SDS website and review the registration information, including disability documentation guidelines and how to submit the SDS registration form online using the confidential data management software called \href{https://sds.umbc.edu/accommodations/registering-with-sds/}{Accommodate}. 
+
+Once accommodations have been approved, you and your instructors will be notified via an emailed accommodation letter from the SDS office.  Both the SDS office and Shady Grove's \href{https://shadygrove.umd.edu/student-services/center-for-academic-success}{Center for Academic Success(CAS)} will work with you to ensure you receive the approved accommodations. If you have any questions or concerns, please contact the \href{https://sds.umbc.edu/}{Office of Student Disability Services SDS} via disAbility@umbc.edu or phone at 410-455-2459. Please note that accommodations are not retroactive and begin once SDS sends an approved accommodation letter.
+For more information on the services CAS provides, please contact Mary Gallagher (maryg@umd.edu) or visit \href{https://shadygrove.umd.edu/student-services/center-for-academic-success}{Student-Services/Center for  Academic Success}
+
+\subsection*{Title IX Statement}
+Any student who has experienced sexual harassment or assault, relationship violence, and/or stalking is encouraged to seek support and resources. There are a number of resources available to you. Please see \href{https://oei.umbc.edu/sample-title-ix-responsible-employee-syllabus-language/}{The Office of Equity and Inclusion Website} for recently updated UMBC Policies and Resources during COVID-19.
+
+With that said, as an instructor, I am considered a Responsible Employee, as per \href{https://oei.umbc.edu/umbcs-policy-on-prohibited-sexual-misconduct-interpersonal-violence-and-other-related-misconduct/}{UMBC's Interim Policy on Prohibited Sexual Misconduct, Interpersonal Violence, and Other Related Misconduct}. This means that while I am here to listen and support you, I am required to report disclosures of sexual assault, domestic violence, relationship violence, stalking, and/or gender-based harassment to the University's Title IX Coordinator. The purpose of these requirements is for the University to inform you of options, supports, and resources.
+
+You can utilize support and resources even if you do not want to take any further action. You will not be forced to file a police report, but please be aware, depending on the nature of the offense, the University may take action.
+\begin{itemize}
+	\item \href{https://counseling.umbc.edu/}{The Counseling Center}. phone: 410-455-27742 (M-F 8:30am - 5pm)
+	\item \href{https://uhs.umbc.edu/}{University Health Services}: 410-455-2542 (M-F 8:30am - 5pm)
+	\item For after-hours emergency consultation, call \href{https://police.umbc.edu/}{the police} at 410-455-5555
+\end{itemize}
+
+Other on-campus supports and resources:
+
+\begin{itemize}
+	\item \href{https://womenscenter.umbc.edu/}{The Women's Center}(available to students of all genders): 410-455-2714 (M-Th 9:30am -6pm, F 9:30am - 4pm)
+	\item \href{https://oei.umbc.edu/sexual-misconduct-policy-and-procedures/}{Title IX Coordinator}: 410-455-1606 (M-F 9am - 5pm)
+\end{itemize}
+If you need to speak with someone in confidence about an incident, UMBC has the following Confidential Resources available to support you:
+
+
+% Course Schedule %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\section*{Schedule and weekly learning goals}
+
+The schedule is tentative and subject to change. 
+% Set first date of the semester (for some reason this is a week before what comes up, but that's easy to get around)
+\SetDate[23/08/2021]
+\week{Week 01}  Introduction to DATA601 and data science
+\begin{itemize}
+\item Course logistics, resources and policies.
+\item Introduction and review of basic tools.
+\item Overview of the course: what you will learn and what we will not cover. 
+\item Coding Basics: Naming conventions, objects and their methods, built-in functions etc.
+\end{itemize}
+
+\week{Week 02} Basics of visualization with Python
+\begin{itemize}
+\item Visualization with matplotlib
+\item Figure, axis, titles, labels etc.
+\item Adding subplots to a figure
+\item Bar charts and box plots
+\end{itemize}
+
+\week{Week 03} Data transformations
+\begin{itemize}
+\item Installing and importing pandas
+\item Dataframes vs series
+\item Choosing an observation
+\item Choosing a variable
+\item Renaming, dropping a column, sorting values in a column
+\item Boolean mask and filtering
+\item Detecting missing values
+\item Describe, info, etc. 
+\end{itemize}
+
+\week{Week 04} Data Transformations - Part-II
+\begin{itemize}
+\item Operations on series: +/-/*, log, ranking, cutting etc.
+\item Grouping and aggregation
+\item Vectorized string operations
+\item Pivot tables
+\end{itemize}
+
+\week{Week 05} Exploratory data analysis
+\begin{itemize}
+\item Variation
+\item Typical values
+\item Unusual values
+\item Heatmaps
+\item Patterns and models
+\end{itemize}
+
+\week{Week 06} Loading and wrangling data
+\begin{itemize}
+\item Introductions to different data formats
+\item Reading csv, excel, html files
+\item Handling numbers 
+\item Handling strings
+\item Working with dates and times
+\item Tidying data
+\end{itemize}
+
+\week{Week 07} Relational data
+\begin{itemize}
+\item Merging, concatenation, joining datasets.
+\end{itemize}
+
+\week{Week 08} Working with strings
+\begin{itemize}
+\item String operations
+\item Exact matches
+\item fuzzy matches
+\end{itemize}
+
+\week{Week 09}  Working with date and time
+\begin{itemize}
+	\item Timezone handling
+	\item Moving Averages
+	\item Resampling methods for time series
+	\item Time series visualizations
+\end{itemize}
+\week{Week 10} Basics of object oriented programming 
+\begin{itemize}
+\item Introduction to classes and objects
+\item Global variables
+\item Inheritance
+\end{itemize}
+
+\week{Week 11} Web Scraping and API
+\begin{itemize}
+\item Basic HTML
+\item Best Practices of Web Scraping
+\item Use and Benefits of APIs
+\end{itemize}
+
+\week{Week 12} Modeling
+\begin{itemize}
+\item Place of modeling in a data science project
+\item Linear Regression
+\item Visualizing Models
+\end{itemize}
+
+\week{Week 13} Report and Commmunication
+\begin{itemize}
+\item Structure of a Data Analysis Write-up
+\item Project Structure and Deliverables
+\item Reproducibility
+\item Project Structure and Deliverables
+\end{itemize}
+
+\week{Week 14} Misc
+\begin{itemize}
+\item 
+\end{itemize}
+
+\week{Week 15} Review and Wrapping-up
+\begin{itemize}
+\item 
+\end{itemize}
+
+\end{document}
+
+
+
